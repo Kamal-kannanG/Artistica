@@ -82,7 +82,7 @@ const generateImage = async () => {
   return (
     <section className='max-w-7xl mx-auto'>
       <div>
-      <h1 className='font-exrtrabold text-[#222328] text-[32px]'>
+      <h1 className='font-exrtrabold text-[#1f6feb] text-[32px]'>
                 Create
             </h1>
             <p className='mt-2 text-[#666e75] text-[14px] max-w-[500px]'>
@@ -110,8 +110,8 @@ const generateImage = async () => {
               isSupriseMe
               handleSupriseMe={handleSupriseMe}
             />
-            <div className="relative bg-gray-50 border border-gray-300 
-        text-gray-900 text-sm rounded-lg
+            <div className="relative bg-[#4a4a4d] border border-gray-300 
+        text-black text-sm rounded-lg
          focus:ring-blue-500 focus:border-blue-300 w-64 h-64 p-3 
          flex justify-center items-center">
             {form.photo ? (
@@ -131,14 +131,14 @@ const generateImage = async () => {
         </div>
         <div className="mt-5 flex gap-5">
           <button type='button' onClick={generateImage} className='text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center' >
-            {generatingImg ? 'Genarating...' : 'Genarate'}
+            {generatingImg ? 'Generating...' : 'Generate'}
           </button>
         </div>
         <div className='mt-10' >
               <p className='mt-2 text-[#666e75] text-[14px]' >
                 Once you have created the image if you want , you can share it with others in the community
               </p>
-              <button type='submit' className='mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center' >
+              <button type='submit' className='mt-3 text-white bg-[#6469ff] hover:bg-[#4147fa] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center' >
                 {loading ? 'Sharing...' : 'Share  with the community'}
               </button>
         </div>
