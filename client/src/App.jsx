@@ -1,6 +1,6 @@
 import {React} from 'react'
 import { BrowserRouter , Link , Route , Routes,useLocation } from 'react-router-dom'
-import { Artistica , logo } from './assets/index'
+import { artisticaLogos , Artistica , logo } from './assets/index'
 import { Home , CreatePost } from './pages/index'
 
 
@@ -17,7 +17,7 @@ const App = () => {
                 
         <header className='w-full flex  justify-between items-center bg-[black] sm:px-8 px-4 py-4 ' >
             <Link to="/" >
-                <img src={ Artistica } alt="logo" className='w-28 h-15 object-center' />
+                <img src={ artisticaLogos } alt="logo" className='w-28 h-15 object-center' />
             </Link>
 
             {pathname==='/' ? (<Link to="/create-post" className='font-inter font-medium bg-[#6469ff] text-white hover:bg-[#4147fa] px-4 py-2 rounded-md '  >

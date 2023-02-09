@@ -7,7 +7,7 @@ const FormField = ({ LabelName , type , name , placeholder , value , handleChang
       <div className='flex items-center gap-2 mb-2'>
         <label htmlFor={name} className="block text-sm text-[#1f6feb] font-medium">{LabelName}</label>
         { isSupriseMe &&(
-          <button type='button' onClick={handleSupriseMe} className='font-semibold text-xs bg-[#ECECF1] py-1 px-2 rounded-[5px] text-black w-auto'>
+          <button type='button' onClick={handleSupriseMe} className='font-semibold text-xs text-white bg-green-700 py-1 px-2 rounded-[5px] w-auto'>
                Suprise Me
           </button>
         )}
