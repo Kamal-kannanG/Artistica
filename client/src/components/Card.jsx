@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { download } from '../assets'
 import { edit } from '../assets'
 import { downloadImage } from '../utils'
 
 const Card = ({ _id , name , prompt ,photo }) => {
+
   return (
     <div className='rounded-xl group relative shadow-card hover:shadow-cardhover card' >
        <img src={photo} alt={prompt} className='w-full h-auto object-cover rounded-xl' />
@@ -18,9 +20,11 @@ const Card = ({ _id , name , prompt ,photo }) => {
                 <p className='text-white text-sm' >{name}</p>
             </div>
             <div className='flex justify-between gap-2'>
-            <button className='outline-none bg-transparent border-none' type='button' onClick={() => downloadImage(_id, photo)} >
+            <Link to={`/api/v1/post/edit-post/${_id}`}>
+            <button className='outline-none bg-transparent border-none' type='button'  >
                 <img src={edit} alt="edit" className='w-6 h-6 object-contain' />
             </button>
+            </Link>
             <button className='outline-none bg-transparent border-none' type='button' onClick={() => downloadImage(_id, photo)} >
                 <img src={download} alt="download" className='w-6 h-6 object-contain invert' />
             </button>

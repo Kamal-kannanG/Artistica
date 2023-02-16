@@ -21,3 +21,8 @@
   background-color: #666e75;
   border-radius: 5px;
 }
+
+.main{
+    padding-left: 0;
+    padding-right: 0;
+}
