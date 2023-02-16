@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { download } from '../assets'
-import { edit } from '../assets'
+import {RiImageEditLine}from 'react-icons/ri'
 import { downloadImage } from '../utils'
 
 const Card = ({ _id , name , prompt ,photo }) => {
@@ -19,10 +19,10 @@ const Card = ({ _id , name , prompt ,photo }) => {
                 </div>
                 <p className='text-white text-sm' >{name}</p>
             </div>
-            <div className='flex justify-between gap-2'>
+            <div className='flex justify-between items-center gap-3'>
             <Link to={`/api/v1/post/edit-post/${_id}`}>
             <button className='outline-none bg-transparent border-none' type='button'  >
-                <img src={edit} alt="edit" className='w-6 h-6 object-contain' />
+                <RiImageEditLine className='w-6 h-6 text-white'/>
             </button>
             </Link>
             <button className='outline-none bg-transparent border-none' type='button' onClick={() => downloadImage(_id, photo)} >
