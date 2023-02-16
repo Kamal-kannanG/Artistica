@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { download } from '../assets'
+import { edit } from '../assets'
 import { downloadImage } from '../utils'
 
 const Card = ({ _id , name , prompt ,photo }) => {
@@ -16,9 +17,14 @@ const Card = ({ _id , name , prompt ,photo }) => {
                 </div>
                 <p className='text-white text-sm' >{name}</p>
             </div>
+            <div className='flex justify-between gap-2'>
+            <button className='outline-none bg-transparent border-none' type='button' onClick={() => downloadImage(_id, photo)} >
+                <img src={edit} alt="edit" className='w-6 h-6 object-contain' />
+            </button>
             <button className='outline-none bg-transparent border-none' type='button' onClick={() => downloadImage(_id, photo)} >
                 <img src={download} alt="download" className='w-6 h-6 object-contain invert' />
             </button>
+            </div>
           </div>
        </div>
     </div>
