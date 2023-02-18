@@ -5,12 +5,57 @@ import {GiResize} from 'react-icons/gi';
 import {FiRotateCcw,FiRotateCw} from 'react-icons/fi';
 import {BsCrop} from 'react-icons/bs';
 import {RxStack} from 'react-icons/rx';
+import {TiCancel} from 'react-icons/ti';
+
+import { downloadImage } from '../utils'
+
 
 
  const Edit = () => {
     const [loading, setLoading] = useState(true);
     const [post, setPost] = useState(null);
     const {_id}=useParams();
+    const [filter, setFilter] = useState('');
+    const [rotate, setRotate] = useState('');
+
+    const onRRotate =() => {
+      setRotate('rotate-[90deg]') ;
+    }
+    const onLRotate =() => {
+      setRotate('rotate-[-90deg]') ;
+    }
+    const onNRotate =() => {
+      setRotate('rotate-0') ;
+    }
+
+
+    const onNoFilter =() => {
+      setFilter('') ;
+    }
+    const onBlur =() => {
+      setFilter('blur-[2px]') ;
+    }
+    const onContrast =() => {
+      setFilter('contrast-[200%]') ;
+    }
+    const onGrayScale =() => {
+      setFilter('grayscale-[80%]') ;
+    }
+    const onHue =() => {
+      setFilter('hue-rotate-180') ;
+    }
+    const onSepia =() => {
+      setFilter('sepia') ;
+    }
+    const onBright =() => {
+      setFilter('brightness-[80%]') ;
+    }
+    const onSaturate =() => {
+      setFilter('saturate') ;
+    }
+    const onInvert =() => {
+      setFilter('invert') ;
+    }
 
     useEffect(() =>{
         
@@ -36,6 +81,7 @@ import {RxStack} from 'react-icons/rx';
         
        
     },[]);
+   const imageCss = filter+' ' + rotate;
   return (
     <>
     {loading ? (
@@ -43,14 +89,28 @@ import {RxStack} from 'react-icons/rx';
             <Loader/>
         </div>
         ) : (
-       <div className='flex flex-col justify-between items-center gap-[1rem]'>
+      
+        <div className='flex flex-col justify-between items-center gap-[10rem]'>
         <div className='flex p-6 w-full '>
-            <button className= 'w-[120px] h-[50px] mr-[25%] rounded-md bg-green-700 text-white hover:text-green-700 hover:bg-white'>
+            <button onClick={() => downloadImage(_id, post.photo)} className= 'w-[120px] h-[50px] mr-[25%] rounded-md bg-green-700 text-white hover:text-green-700 hover:bg-white'>
                 Save
             </button>
         <div className='max-w-[35%] h-auto object-contain '>
-        <img src={post.photo}/>
+          <div className='object-contain w-[500px] h-[500px] mt-18'>
+          <img src={post.photo} className={imageCss}/>
+          </div>
         </div>
+        <div className='max-h-full w-auto flex flex-col items-center justify-between ml-[35%] shadow-barhover p-3 rounded-md bg-transparent'>
+        <button className='text-white' onClick={onNoFilter}>No Filter</button>
+        <button className='text-white' onClick={onBlur}>Blur</button>
+        <button className='text-white' onClick={onContrast}>Contrast</button>
+        <button className='text-white' onClick={onGrayScale}>Gray Scale</button>
+        <button className='text-white' onClick={onHue}>Hue</button>
+        <button className='text-white' onClick={onInvert}>Invert</button>
+        <button className='text-white' onClick={onSepia}>Sepia</button>
+        <button className='text-white' onClick={onBright}>Bright</button>
+        <button className='text-white' onClick={onSaturate}>Saturate</button>
+       </div>
         </div>
         <div className='flex  bg-transparent w-full h-[3.5rem] rounded-md shadow-barhover justify-between items-center px-5'>
             <div className='flex flex-col text-white justify-center items-center'>
@@ -61,13 +121,25 @@ import {RxStack} from 'react-icons/rx';
               <BsCrop className='w-6 h-6 text-white cursor-pointer'/>
               <p>Crop</p>
             </div>
+            <div className='flex justify-between items-center gap-3'>
             <div className='flex flex-col text-white justify-center items-center'>
-              <FiRotateCcw className='w-6 h-6 text-white cursor-pointer'/>
+              <button onClick={onRRotate}>
+                <FiRotateCcw className='w-6 h-6 text-white cursor-pointer'/>
+              </button>
               <p>Rotate Left</p>
             </div>
             <div className='flex flex-col text-white justify-center items-center'>
-              <FiRotateCw className='w-6 h-6 text-white cursor-pointer'/>
+              <button onClick={onNRotate}>
+                <TiCancel className='w-6 h-6 text-white cursor-pointer'/>
+              </button>
+              <p>No Rotate</p>
+            </div>
+            <div className='flex flex-col text-white justify-center items-center'>
+              <button onClick={onLRotate}>
+                <FiRotateCw className='w-6 h-6 text-white cursor-pointer'/>
+              </button>
               <p>Rotate Right</p>
+            </div>
             </div>
             <div className='flex flex-col text-white justify-center items-center'>
               <RxStack className='w-6 h-6 cursor-pointer'/>
@@ -75,6 +147,7 @@ import {RxStack} from 'react-icons/rx';
             </div>
         </div>
        </div>
+       
     )}
     </>
     
